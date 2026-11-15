@@ -1,0 +1,87 @@
+:root {
+  --bg: #f7f5f0;
+  --surface: #ffffff;
+  --ink: #1d1b18;
+  --muted: #6b665d;
+  --line: #e4dfd5;
+  --accent: #b5532c;
+  --accent-ink: #ffffff;
+  --chip: #f0ece4;
+  --chip-on: #1d1b18;
+  --chip-on-ink: #f7f5f0;
+  --radius: 14px;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #181715;
+    --surface: #211f1c;
+    --ink: #ece8e0;
+    --muted: #a39d92;
+    --line: #34312c;
+    --accent: #e0794d;
+    --accent-ink: #181715;
+    --chip: #2a2824;
+    --chip-on: #ece8e0;
+    --chip-on-ink: #181715;
+    color-scheme: dark;
+  }
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+main { max-width: 620px; margin: 0 auto; padding: 40px 16px 80px; }
+.brand { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 28px; }
+.brand h1 { font-size: 22px; margin: 0; letter-spacing: -0.02em; }
+.brand span { color: var(--muted); font-size: 13px; }
+.lede { font-size: 28px; line-height: 1.2; letter-spacing: -0.02em; margin: 0 0 18px; font-weight: 650; text-wrap: balance; }
+.sub { color: var(--muted); margin: 0 0 22px; }
+textarea {
+  width: 100%; min-height: 128px; resize: vertical;
+  padding: 14px 16px; border-radius: var(--radius);
+  border: 1px solid var(--line); background: var(--surface); color: var(--ink);
+  font: inherit;
+}
+textarea:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-top: 14px; }
+.btn {
+  appearance: none; border: 0; border-radius: 999px; cursor: pointer;
+  padding: 11px 20px; font: inherit; font-weight: 600;
+  background: var(--accent); color: var(--accent-ink);
+}
+.btn[disabled] { opacity: 0.45; cursor: default; }
+.ghost { background: transparent; color: var(--muted); border: 1px solid var(--line); }
+.examples { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+.examples button { font-size: 13px; padding: 6px 12px; border-radius: 999px; border: 1px dashed var(--line); background: transparent; color: var(--muted); cursor: pointer; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; margin-top: 16px; }
+.label { font-size: 13px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; margin: 0 0 4px; }
+.decision { font-size: 20px; font-weight: 650; margin: 0; letter-spacing: -0.01em; }
+.q { margin-top: 18px; }
+.q p { margin: 0 0 10px; font-weight: 600; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip {
+  border: 1px solid var(--line); background: var(--chip); color: var(--ink);
+  border-radius: 999px; padding: 8px 14px; font: inherit; font-size: 15px; cursor: pointer;
+  min-height: 40px;
+}
+.chip[aria-pressed="true"] { background: var(--chip-on); color: var(--chip-on-ink); border-color: var(--chip-on); }
+.brief h2 { font-size: 13px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin: 20px 0 6px; }
+.brief h2:first-child { margin-top: 0; }
+.brief h2:first-child + p { font-size: 19px; font-weight: 600; line-height: 1.4; }
+.brief p { margin: 0 0 8px; }
+.brief ul { margin: 0 0 8px; padding-left: 20px; }
+.brief li { margin: 4px 0; }
+.caret { display: inline-block; width: 8px; height: 1.1em; background: var(--accent); vertical-align: text-bottom; animation: blink 1s steps(2) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+.meta { display: flex; gap: 14px; flex-wrap: wrap; color: var(--muted); font-size: 12px; margin-top: 12px; font-variant-numeric: tabular-nums; }
+.banner { font-size: 13px; padding: 10px 14px; border-radius: 10px; background: var(--chip); color: var(--muted); margin-bottom: 18px; }
+.err { color: var(--accent); margin-top: 12px; }
+.skeleton { height: 14px; border-radius: 6px; background: var(--chip); margin: 10px 0; animation: pulse 1.2s ease-in-out infinite; }
+@keyframes pulse { 50% { opacity: 0.5; } }
+@media (prefers-reduced-motion: reduce) { .caret, .skeleton { animation: none; } }
+@media (max-width: 480px) { main { padding-top: 24px; } .lede { font-size: 24px; } }
